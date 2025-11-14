@@ -1,5 +1,5 @@
-import {initializeApp, cert } from "firebase-admin/app"
-import {getFirestore} from "firebase-admin/firestore"
+import {initializeApp, cert } from "firebase-admin/app";
+import {getFirestore} from "firebase-admin/firestore";
 import admin from "firebase-admin";
 import dotenv from "dotenv";
 dotenv.config();
@@ -26,9 +26,8 @@ const db = admin.firestore();
 
 export default db;
 
-const express = require("express");
-const app = express();
-const path = require("path");
+import express from "express";
+import path from "path";
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
