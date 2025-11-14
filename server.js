@@ -6,6 +6,7 @@ dotenv.config();
 
 const serviceAccount = {
 
+  port: process.env.PORT,
   type: process.env.TYPE,
   project_id: process.env.PROJECT_ID,
   private_key_id: process.env.PRIVATE_KEY_ID,
@@ -600,7 +601,7 @@ app.get("/intro", (req, res) => {
   res.send("Server is running");
 });
 
-const PORT = process.env.PORT || 3000
-app.listen(PORT , () => {
+
+app.listen(port , () => {
   console.log("Server runs on port" + PORT );
 });
