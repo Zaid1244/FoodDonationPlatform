@@ -28,9 +28,6 @@ const db = admin.firestore();
 
 export default db;
 
-app.get("/", (req, res) => {
-  res.render("intro");  // or ANY EJS view you want
-});
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -593,6 +590,8 @@ app.post("/donation_collect", async (req, res) => {
   });
 });
 
+app.get("/", (req, res) => res.render("intro"));
+
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.render("intro");
@@ -602,6 +601,6 @@ app.get("/intro", (req, res) => {
 });
 
 
-app.listen(port , () => {
+app.listen(port ,"0.0.0.0", () => {
   console.log("Server runs on port" + PORT );
 });
