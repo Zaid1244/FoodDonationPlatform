@@ -26,15 +26,23 @@ const db = admin.firestore();
 
 export default db;
 
+const express = require("express");
+const app = express();
+const path = require("path");
+
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+
+
+
 import bp from "body-parser"
 import ph from "password-hash"
 import uniqId from "uniqid"
 import session from "express-session"
-import express from "express"
 const app = express();
 app.use(express.static('public'));
 
-app.set("view engine", "ejs");
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 app.use(
@@ -45,9 +53,10 @@ app.use(
   })
 );
 
-app.get("/", function (req, res) {
+app.get("/", (req, res) => {
   res.render("intro");
 });
+
 
 app.get("/signup", function (req, res) {
   res.render("reg_home");
@@ -582,6 +591,7 @@ app.get("/logout", (req, res) => {
   res.render("intro");
 });
 
-app.listen(3000, () => {
-  console.log("Server runs on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
 });
