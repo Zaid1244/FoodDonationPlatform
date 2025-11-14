@@ -1,12 +1,13 @@
+"scripts": {
+    "start": "node server.js"
+  },
 {
   "name": "food-donation-platform",
   "version": "1.0.0",
   "description": "Food Donation Platform using Express and EJS",
   "type": "module",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
+  "main": "server.js"},
+  
   "engines": {
     "node": ">=16"
   },
