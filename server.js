@@ -27,6 +27,20 @@ const db = admin.firestore();
 
 export default db;
 
+app.get("/", (req, res) => {
+  res.render("intro");  // or ANY EJS view you want
+});
+
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
+
 import bp from "body-parser"
 import ph from "password-hash"
 import uniqId from "uniqid"
@@ -580,8 +594,12 @@ app.post("/donation_collect", async (req, res) => {
 
 app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.render("intro");
+  res.render("intro.ejs");
 });
+app.get("/", (req, res) => {
+  res.send("Server is running");
+});
+
 const port = process.env.PORT || 3000
 app.listen(port , "0.0.0.0", () => {
   console.log("Server runs on port" + PORT );
