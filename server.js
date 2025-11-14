@@ -27,7 +27,7 @@ const db = admin.firestore();
 export default db;
 
 import express from "express";
-import path from "path";
+const path = require("path");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views")); // ensure correct views path
@@ -591,7 +591,7 @@ app.get("/logout", (req, res) => {
   res.render("intro");
 });
 
-const port = process.env.PORT
+const port = process.env.PORT;
 app.listen(port , "0.0.0.0", () => {
   console.log(`Server running on port' , port );
 });
