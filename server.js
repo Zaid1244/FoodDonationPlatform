@@ -28,7 +28,6 @@ const db = admin.firestore();
 export default db;
 
 
-import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -37,16 +36,35 @@ const __dirname = path.dirname(__filename);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+const express = require("express");
+const app = express();
+const path = require("path");
+
+// Middleware
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+
+// Home route
+app.get("/", (req, res) => {
+  res.render("intro"); // make sure views/intro.ejs exists
+});
+
+// Other routes...
+// e.g., /login, /register, etc.
+
+// Start server
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 
 import bp from "body-parser"
 import ph from "password-hash"
 import uniqId from "uniqid"
 import session from "express-session"
-import express from "express"
-const app = express();
 app.use(express.static('public'));
 
-app.set("view engine", "ejs");
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
 app.use(
@@ -597,11 +615,5 @@ app.get("/logout", (req, res) => {
 });
 app.get("/intro", (req, res) => {
   res.send("Server is running");
-});
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`Server running on port ${PORT}`);
 });
 
