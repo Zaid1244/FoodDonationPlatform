@@ -30,17 +30,18 @@ import express from "express";
 import path from "path";
 
 app.set("view engine", "ejs");
-app.use(express.urlencoded({ extended: true }));
+app.set("views", path.join(__dirname, "views")); // ensure correct views path
+
+// Serve static files
 app.use(express.static(path.join(__dirname, "public")));
 
-
+app.use(express.static('public'));
 
 import bp from "body-parser"
 import ph from "password-hash"
 import uniqId from "uniqid"
 import session from "express-session"
 const app = express();
-app.use(express.static('public'));
 
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.json());
