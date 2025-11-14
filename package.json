@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Food Donation Platform using Express and EJS",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node server.js"
   },
