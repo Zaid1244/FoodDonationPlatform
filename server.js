@@ -583,6 +583,6 @@ app.get("/logout", (req, res) => {
   res.render("intro");
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log("Server runs on port" + PORT );
 });
