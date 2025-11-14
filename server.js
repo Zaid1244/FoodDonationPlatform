@@ -594,13 +594,13 @@ app.post("/donation_collect", async (req, res) => {
 
 app.get("/logout", (req, res) => {
   req.session.destroy();
-  res.render("intro.ejs");
+  res.render("intro");
 });
-app.get("/", (req, res) => {
+app.get("/intro", (req, res) => {
   res.send("Server is running");
 });
 
-const port = process.env.PORT || 3000
-app.listen(port , "0.0.0.0", () => {
+const PORT = process.env.PORT || 3000
+app.listen(PORT , () => {
   console.log("Server runs on port" + PORT );
 });
