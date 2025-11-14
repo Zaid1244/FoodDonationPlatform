@@ -577,12 +577,12 @@ app.post("/donation_collect", async (req, res) => {
     dataArr: { org_his_data },
   });
 });
-const PORT = process.env.PORT || 3000
+
 app.get("/logout", (req, res) => {
   req.session.destroy();
   res.render("intro");
 });
-
-app.listen(PORT, "0.0.0.0", () => {
+const port = process.env.PORT || 3000
+app.listen(port , "0.0.0.0", () => {
   console.log("Server runs on port" + PORT );
 });
